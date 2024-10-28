@@ -39,8 +39,9 @@ function dataDimensions(data) {
 
 // Task 3
 function calculateMean(dataset) {
-  // returns a float or false
-  
+  {
+    if (!Array.isArray(dataset) || dataset.length === 0) return false;
+ const validNumber = dataset.filter(value => validNumber(value)).map(Number);
 }
 
 // Task 4
@@ -71,7 +72,7 @@ function loadCSV(csvFile, ignorerows, ignorecols) {  // string, dataset, dataset
 function calculateMedian(dataset) {
   // return float or false 
   
-}
+} }
 
 // Task 9
 function createSlice(dataframe, colindex, colpattern, exportcols = []) { // dataframe, integer, string/numeric, dataset
