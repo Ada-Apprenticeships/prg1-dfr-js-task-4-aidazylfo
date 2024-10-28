@@ -10,31 +10,31 @@ function validNumber(value) { // value can be string or numeric
 } };
 
 // Task 2
-function dataDimensions(dataframe) {
-  // returns a list [rows (int), cols (int)]
-  {
-    if(!data) {
-      return [-1, -1];
-    }
-
-    // Check if data is an array
-    if (Array.isArray(data)) {
-        const rowCount = data.length;
-        const colCount = rowCount > 0 ? Object.keys(data[0]).length : 0;
-        return [rowCount, colCount];
-    }
-
-    // Check if data is an object (for DataFrame-like structure)
-    if (typeof data === 'object' && data !== null) {
-        const rows = Object.values(data);
-        const rowCount = rows.length;
-        const colCount = rowCount > 0 ? Object.keys(rows[0]).length : 0;
-        return [rowCount, colCount];
-    }
-
-    // If the data is not an array or object, return -1 for both dimensions
-    return [-1, -1];
-}
+function dataDimensions(data) {
+ {
+      let rows = -1;
+      let cols = -1;
+  
+      // Check if the input is null or undefined
+      if (data == null) {
+          return [rows, cols];
+      }
+  
+      // Handle array of objects (like a DataFrame)
+      if (Array.isArray(data)) {
+          rows = data.length;
+          if (rows > 0 && typeof data[0] === 'object') {
+              cols = Object.keys(data[0]).length;
+          }
+      } else if (typeof data === 'object') {
+          // Handle plain object (single row DataFrame-like structure)
+          rows = 1;
+          cols = Object.keys(data).length;
+      }
+  
+      return [rows, cols];
+  }
+  
 }
 
 // Task 3
