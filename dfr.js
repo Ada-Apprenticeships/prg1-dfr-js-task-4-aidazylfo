@@ -7,11 +7,34 @@ function validNumber(value) { // value can be string or numeric
 // returns a boolean 
 { 
   return typeof value === 'number' && isFinite(value); // a value is equal to a number or a realistic value 
-} }
+} };
 
 // Task 2
 function dataDimensions(dataframe) {
   // returns a list [rows (int), cols (int)]
+  {
+    if(!data) {
+      return [-1, -1];
+    }
+
+    // Check if data is an array
+    if (Array.isArray(data)) {
+        const rowCount = data.length;
+        const colCount = rowCount > 0 ? Object.keys(data[0]).length : 0;
+        return [rowCount, colCount];
+    }
+
+    // Check if data is an object (for DataFrame-like structure)
+    if (typeof data === 'object' && data !== null) {
+        const rows = Object.values(data);
+        const rowCount = rows.length;
+        const colCount = rowCount > 0 ? Object.keys(rows[0]).length : 0;
+        return [rowCount, colCount];
+    }
+
+    // If the data is not an array or object, return -1 for both dimensions
+    return [-1, -1];
+}
 }
 
 // Task 3
